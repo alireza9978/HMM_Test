@@ -16,7 +16,10 @@ def plot_data_color(input_x, y):
     fig, axes = plt.subplots(input_x.shape[1])
     for dim in range(input_x.shape[1]):
         x = input_x[:, dim]
-        ax = axes[dim]
+        if input_x.shape[1] == 1:
+            ax = axes
+        else:
+            ax = axes[dim]
         time = np.arange(0, x.shape[0])
         ax.plot(time, x)
         last = None
