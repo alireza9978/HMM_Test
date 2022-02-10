@@ -14,7 +14,7 @@ model.covars_ = np.array([[[0.5]], [[0.5]], [[0.5]]])
 
 # generate data with defined hmm model
 X, Z = model.sample(100)
-plot_data_color(X, Z)
+# plot_data_color(X, Z)
 
 # add nan to data
 temp_indexes = np.random.choice(np.arange(X.shape[0]), 10)
@@ -23,7 +23,7 @@ new_x = np.array(X, copy=True)
 
 # trying to learn a new model with data that contains nan
 new_model = hmm.GaussianHMM(n_components=3, covariance_type="full")
-new_model.fit(new_x)
+new_model.fit_wit_nan(new_x)
 y = new_model.predict(new_x)
 y = np.array(y)
 evaluate_model_two(y, Z, 3)
