@@ -3,6 +3,7 @@ import numpy as np
 from src.evaluation import evaluate_model_two
 from visualization import plot_data_color
 from hmmlearn import hmm
+from my_hmm.hmmt import GaussianHMMT
 
 np.random.seed(42)
 
@@ -22,7 +23,7 @@ X[temp_indexes] = np.nan
 new_x = np.array(X, copy=True)
 
 # trying to learn a new model with data that contains nan
-new_model = hmm.GaussianHMM(n_components=3, covariance_type="full")
+new_model = GaussianHMMT(n_components=3, covariance_type="full")
 new_model.fit_wit_nan(new_x)
 y = new_model.predict(new_x)
 y = np.array(y)
